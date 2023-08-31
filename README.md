@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Quiz game for IBM party
+
+To add your questions, modify QuizPage.js
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -13,6 +15,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+### `nodemon index.js`
+
+Run this in server directory to start the MongoDB server.
 
 ### `yarn test`
 
