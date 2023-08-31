@@ -1,0 +1,22 @@
+import React from 'react';
+import { Button, Grid, Column} from '@carbon/react';
+import { Link } from 'react-router-dom';
+
+const LandingPage = () => {
+  return (
+    <Grid className="landing-page">
+    <Column lg={16} md={8} sm={4} className="landing-page__banner">
+      <h1> Tervetuloa IBM:n tupareiden tietokilpailuun!</h1>
+      <div>Osallistu kilpailuun ja voita muiden vieraiden kunnioituksen lisäksi upeita palkintoja!</div>
+    </Column>
+    <Column lg={16} md={8} sm={4} className="landing-page__r2">
+      <Grid className="tabs-group-content">
+        <Column md={4} lg={7} sm={4} className="landing-page_quiz">
+          <Button as={Link} to="/quiz">Kilpailuun</Button>
+        </Column>
+      </Grid>
+    </Column>
+  </Grid>
+  )};
+
+export default LandingPage;
