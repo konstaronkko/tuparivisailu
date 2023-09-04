@@ -8,9 +8,9 @@ class QuizPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            questions: Array(3).fill(""),
+            questions: Array(5).fill(""),
             submitted: false,
-            answers: ["antti", "defender", "22"],
+            answers: ["80", "defender", "22", "433", "4"],
             points: 0
         }
         this.handleQuestion = this.handleQuestion.bind(this);
@@ -21,15 +21,16 @@ class QuizPage extends React.Component {
         e.preventDefault();
         var points = 0;
         this.state.questions.forEach((val, i) => {
+            console.log("arvaus: " + val + " oikea: " + this.state.answers[i])
             if (this.state.answers[i] === val) points += 1;
         });
-        points = (points / this.state.answers.length) * 100;
+        points = Math.round((points / this.state.answers.length) * 100);
         console.log("Submittaus, pisteet: " + points);
         this.props.navigate("/score", { state: {points: points}});
         //this.setState({submitted: true, points: points})
     }
     handleQuestion(index, e) {
-        console.log("HandleQuestion1 triggered")
+        console.log("HandleQuestion triggered: ", e)
         const nextQuestions = this.state.questions.map((c, i) => {
             if (i === index) return e;
             else return c;
@@ -43,7 +44,7 @@ class QuizPage extends React.Component {
             <div>
             <Form onSubmit={this.handleSubmit}>
               <Stack gap={7}>
-                <div>Kuka on Suomen paras Mainframe-teksu?</div>
+                <div>Mikä on Power-laitteiden hyötysuhde?</div>
                 <RadioButtonGroup
                     name="question1"
                     value={this.state.questions[0]}
@@ -52,19 +53,18 @@ class QuizPage extends React.Component {
                 >
                     <RadioButton
                       id="radio-1-1"
-                      labelText="Antti Maasalmi"
-                      value="antti"
+                      labelText="80%"
+                      value="80"
                     />
                     <RadioButton
                       id="radio-1-2"
-                      labelText="Juha Isomäki"
-                      value="juha"
+                      labelText="50%"
+                      value="50"
                     />
                     <RadioButton
                       id="radio-1-3"
-                      labelText="Konsta Rönkkö"
-                      value="konsta"
-                      disabled
+                      labelText="100%"
+                      value="100"
                     />
                 </RadioButtonGroup>
                 
@@ -101,23 +101,79 @@ class QuizPage extends React.Component {
                 >
                   <RadioButton
                     id="radio-3-1"
-                    labelText="Kahden kotitalouden verran"
-                    value="2"
+                    labelText="60 kotitalouden verran"
+                    value="60"
                   />
                   <RadioButton
                     id="radio-3-2"
-                    labelText="Neljän kotitalouden verran"
-                    value="4"
+                    labelText="15 kotitalouden verran"
+                    value="15"
                   />
                   <RadioButton
                     id="radio-3-3"
-                    labelText="Kymmenen kotitalouden verran"
+                    labelText="10 kotitalouden verran"
                     value="10"
                   />
                   <RadioButton
                     id="radio-3-4"
                     labelText="22 kotitalouden verran"
                     value="22"
+                  />
+                </RadioButtonGroup>
+                <div>Montako qubittia on IBM:n uusimmassa Osprey-kvanttisirussa?</div>
+                <RadioButtonGroup
+                  name="question4"
+                  value={this.state.questions[3]}
+                  onChange={(e) => this.handleQuestion(3, e)}
+                  orientation='vertical'
+                >
+                  <RadioButton
+                    id="radio-4-1"
+                    labelText="127"
+                    value="127"
+                  />
+                  <RadioButton
+                    id="radio-4-2"
+                    labelText="133"
+                    value="133"
+                  />
+                  <RadioButton
+                    id="radio-4-3"
+                    labelText="433"
+                    value="433"
+                  />
+                  <RadioButton
+                    id="radio-4-4"
+                    labelText="1121"
+                    value="1121"
+                  />
+                </RadioButtonGroup>
+                <div>Montako uutta kvanttikoneen kestävää salausalgoritmia NIST standardoi parhaillaan?</div>
+                <RadioButtonGroup
+                  name="question5"
+                  value={this.state.questions[4]}
+                  onChange={(e) => this.handleQuestion(4, e)}
+                  orientation='vertical'
+                >
+                  <RadioButton
+                    id="radio-5-1"
+                    labelText="Kolmea"
+                    value="3"
+                  />
+                  <RadioButton
+                    id="radio-5-2"
+                    labelText="Neljää"
+                    value="4"
+                  />
+                  <RadioButton
+                    id="radio-5-3"
+                    labelText="Viittä"
+                    value="5"
+                  />
+                  <RadioButton
+                    id="radio-5-4"
+                    labelText="Kuutta"
+                    value="6"
                   />
                 </RadioButtonGroup>
                 <Button type="submit" aria-label="Lähetä">Lähetä</Button>

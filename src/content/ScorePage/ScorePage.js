@@ -12,25 +12,61 @@ class ScorePage extends React.Component {
             nickname: "",
             email: ""
         }
+        this.handleNick = this.handleNick.bind(this);
+        this.handleEmail = this.handleEmail.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleNick(e) {
+        this.setState({nickname: e.target.value});
+    }
+
+    handleEmail(e) {
+        this.setState({email: e.target.value});
+    }
+
+    async handleSubmit(e) {
+        e.preventDefault();
+        var newScore = {
+            nickname: this.state.nickname,
+            email: this.state.email,
+            score: this.props.location.state.points
+        };
+
+        await fetch("http://localhost:5050/record", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newScore),
+        })
+        .catch(error => {
+          window.alert(error);
+          return;
+        });
+        this.setState({email: "", nickname: ""});
+        this.props.navigate("/");
     }
 
     render() {
         return(
             <Stack gap={7}>
-                <h3>Hienoa, sait {Math.round(this.props.location.state.points)}% vastauksista oikein!</h3>
+                <h3>Hienoa, sait {this.props.location.state.points}% vastauksista oikein!</h3>
                 <div>Mikäli haluat osallistua arvontaan, täytä vielä alla oleva lomake:</div>
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     <TextInput 
-                        classname='registration-input' 
+                        className='registration-input' 
                         id='nickname' 
                         labelText="Nimimerkki"
-                        placeholder="Keksi itsellesi nimimerkki tulostaulukkoa varten" />
+                        placeholder="Keksi itsellesi nimimerkki tulostaulukkoa varten"
+                        onChange={(e) => this.handleNick(e)} />
                     <TextInput 
-                        classname='registration-input' 
+                        className='registration-input' 
                         id='email' 
                         labelText="Sähköpostiosoite"
-                        placeholder="Anna sähköpostisi, jotta voimme tavoittaa sinut mikäli et ole palkintojenjaossa" />
-                    <Button>Lähetä</Button>
+                        placeholder="Anna sähköpostisi, jotta voimme tavoittaa sinut mikäli et ole palkintojenjaossa" 
+                        onChange={(e) => this.handleEmail(e)} />
+                    <Button type="submit">Lähetä</Button>
                 </Form>
                 <div>Etkö ole tyytyväinen tulokseesi? Kokeile visailua uudestaan!</div>
                 <Button as={Link} to="/quiz">Takaisin visaan</Button>
