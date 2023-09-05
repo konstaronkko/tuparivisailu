@@ -1,6 +1,7 @@
 # Quiz game for IBM party
 
 To add your questions, modify QuizPage.js
+ResultsPage and ScorePage contain some spaghetti, careful with those.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
