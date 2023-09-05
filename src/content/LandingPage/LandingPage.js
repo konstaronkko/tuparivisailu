@@ -7,7 +7,7 @@ const LandingPage = () => {
     <Grid className="landing-page">
       <Column lg={16} md={8} sm={4} className="landing-page__banner">
         <h1 className="landing-page__header"> Tervetuloa IBM:n tupareiden tietokilpailuun!</h1>
-        <div className="landing-page__description">Osallistu kilpailuun ja voita muiden vieraiden kunnioituksen lisäksi upeita palkintoja!</div>
+        <div className="landing-page__description">Osallistu kilpailuun ja voita muiden vieraiden kunnioituksen lisäksi upeita palkintoja! Päivän paras tulos palkitaan, lisäksi osallistuneiden kesken arvotaan toinen palkinto.</div>
       </Column>
       <Column lg={16} md={8} sm={4} className="landing-page__r2">
         <Grid className="tabs-group-content">

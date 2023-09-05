@@ -51,7 +51,7 @@ export default function ResultsPage() {
     <meta httpEquiv="refresh" content="30" />
     <Stack gap={7}>
     <h3>Tulostaulu</h3>
-    <div>Parhaat voittavat upeita palkintoja!</div>
+    <div>Päivän paras tulos voittaa! Mutta älä huoli jos tuloksesi ei aivan yltä, muiden kesken arvotaan myös palkinto.</div>
     <DataTable rows={records} headers={headers}>
   {({ rows, headers, getTableProps, getHeaderProps, getRowProps }) => (
     <Table {...getTableProps()}>
