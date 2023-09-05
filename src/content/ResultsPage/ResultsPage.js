@@ -53,6 +53,8 @@ export default function ResultsPage() {
     <Stack gap={7}>
     <h3>Tulostaulu</h3>
     <div>Päivän paras tulos voittaa! Mutta älä huoli jos tuloksesi ei aivan yltä, muiden kesken arvotaan myös palkinto.</div>
+    <div>Jos luet tätä julkiselta näytöltä ja haluat osallistua, linkki on:</div>
+    <a href="https://ibm.biz/tietokilpailu">https://ibm.biz/tietokilpailu</a>
     <DataTable rows={records} headers={headers}>
   {({ rows, headers, getTableProps, getHeaderProps, getRowProps }) => (
     <Table {...getTableProps()}>
