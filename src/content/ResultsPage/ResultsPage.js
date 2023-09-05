@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { DataTable, Table, TableHead, TableBody,TableRow, TableHeader, TableCell, Stack } from "@carbon/react";
-import { sortStates } from "@carbon/react/lib/components/DataTable/state/sortStates";
  
 
 const headers = [
@@ -24,7 +23,7 @@ export default function ResultsPage() {
  // This method fetches the records from the database.
  useEffect(() => {
    async function getRecords() {
-     const response = await fetch(`http://localhost:5050/record/`);
+     const response = await fetch(`http://localhost:8080/record/`);
  
      if (!response.ok) {
        const message = `An error occurred: ${response.statusText}`;
@@ -41,14 +40,16 @@ export default function ResultsPage() {
    }
    console.log(records);
    getRecords();
-   return;
+   const interval=setInterval(()=>{
+    getRecords();
+   }, 30000)
+   return ()=>clearInterval(interval);
  }, [records.length]);
  
 
  
  return (
   <div>
-    <meta httpEquiv="refresh" content="30" />
     <Stack gap={7}>
     <h3>Tulostaulu</h3>
     <div>Päivän paras tulos voittaa! Mutta älä huoli jos tuloksesi ei aivan yltä, muiden kesken arvotaan myös palkinto.</div>

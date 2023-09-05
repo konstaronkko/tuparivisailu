@@ -33,7 +33,7 @@ class ScorePage extends React.Component {
             score: this.props.location.state.points
         };
 
-        await fetch("http://localhost:5050/record", {
+        await fetch("http://localhost:8080/record", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
