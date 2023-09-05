@@ -23,7 +23,7 @@ export default function ResultsPage() {
  // This method fetches the records from the database.
  useEffect(() => {
    async function getRecords() {
-     const response = await fetch(`http://localhost:8080/record/`);
+     const response = await fetch(`https://application-cd.16z6uixp5cb8.eu-de.codeengine.appdomain.cloud/record/`);
  
      if (!response.ok) {
        const message = `An error occurred: ${response.statusText}`;
