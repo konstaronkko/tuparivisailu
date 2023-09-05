@@ -45,7 +45,7 @@ class ScorePage extends React.Component {
           return;
         });
         this.setState({email: "", nickname: ""});
-        this.props.navigate("/");
+        this.props.navigate("/results");
     }
 
     render() {

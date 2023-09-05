@@ -22,7 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 server/45dc1d70-521a-11e9-8c84-3e25686eb210
-server/.env.example
 server/.env
 .gitignore
 server/__temp__ca.pem
